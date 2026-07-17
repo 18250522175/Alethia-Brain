@@ -1,0 +1,664 @@
+/* ============================================================
+   Alethia Audit UI — Apple-Inspired Design System
+   ============================================================ */
+
+/* ---- Task 1: Apple 风格审计色彩体系 ---- */
+
+:root {
+  /* === 审计三级风险语义色 === */
+  /* 低风险 — Apple 柔和翠绿 */
+  --audit-low: #34C759;
+  --audit-low-bg: rgba(52, 199, 89, 0.08);
+  --audit-low-border: rgba(52, 199, 89, 0.25);
+  --audit-low-text: #1B7F30;
+
+  /* 中风险 — Apple 暖琥珀 */
+  --audit-medium: #FF9F0A;
+  --audit-medium-bg: rgba(255, 159, 10, 0.08);
+  --audit-medium-border: rgba(255, 159, 10, 0.25);
+  --audit-medium-text: #B06A00;
+
+  /* 高风险 — Apple 柔和红 */
+  --audit-high: #FF453A;
+  --audit-high-bg: rgba(255, 69, 58, 0.08);
+  --audit-high-border: rgba(255, 69, 58, 0.25);
+  --audit-high-text: #B82020;
+
+  /* === 审计专用阴影（Apple 风格多层柔和阴影） === */
+  --audit-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --audit-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --audit-shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+
+  /* === 玻璃面板基础变量 === */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg-strong: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-blur: 20px;
+  --glass-blur-deep: 40px;
+
+  /* === 审计面板整体背景 === */
+  --audit-surface: rgba(242, 242, 247, 0.8);
+  --audit-surface-elevated: rgba(255, 255, 255, 0.92);
+
+  /* === 排版 === */
+  --audit-font-display: -apple-system, 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
+  --audit-font-text: -apple-system, 'SF Pro Text', 'Inter', 'Helvetica Neue', sans-serif;
+  --audit-font-mono: 'SF Mono', 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+
+  /* === 圆角 === */
+  --audit-radius-sm: 8px;
+  --audit-radius: 16px;
+  --audit-radius-lg: 20px;
+
+  /* === 间距 === */
+  --audit-space-xs: 4px;
+  --audit-space-sm: 8px;
+  --audit-space-md: 16px;
+  --audit-space-lg: 20px;
+  --audit-space-xl: 24px;
+  --audit-space-2xl: 32px;
+}
+
+/* ---- 暗色模式 ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --audit-low: #30D158;
+    --audit-low-bg: rgba(48, 209, 88, 0.12);
+    --audit-low-border: rgba(48, 209, 88, 0.3);
+    --audit-low-text: #30D158;
+
+    --audit-medium: #FFD60A;
+    --audit-medium-bg: rgba(255, 214, 10, 0.12);
+    --audit-medium-border: rgba(255, 214, 10, 0.3);
+    --audit-medium-text: #FFD60A;
+
+    --audit-high: #FF453A;
+    --audit-high-bg: rgba(255, 69, 58, 0.12);
+    --audit-high-border: rgba(255, 69, 58, 0.3);
+    --audit-high-text: #FF453A;
+
+    --audit-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.12);
+    --audit-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.24), 0 2px 4px rgba(0, 0, 0, 0.12);
+    --audit-shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.32), 0 4px 8px rgba(0, 0, 0, 0.12);
+
+    --glass-bg: rgba(28, 28, 30, 0.72);
+    --glass-bg-strong: rgba(28, 28, 30, 0.88);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --audit-surface: rgba(28, 28, 30, 0.8);
+    --audit-surface-elevated: rgba(44, 44, 46, 0.92);
+
+    color-scheme: dark;
+  }
+}
+
+/* ---- Task 2: 字体与排版 ---- */
+
+.audit-app {
+  font-family: var(--audit-font-text);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary, #1D1D1F);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.audit-title {
+  font-family: var(--audit-font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.audit-subtitle {
+  font-family: var(--audit-font-display);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.audit-body {
+  font-family: var(--audit-font-text);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.audit-caption {
+  font-family: var(--audit-font-text);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+.audit-code {
+  font-family: var(--audit-font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ---- Task 3: 毛玻璃审计面板 ---- */
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--audit-radius);
+  box-shadow: var(--audit-shadow-sm);
+}
+
+.glass-panel-deep {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-deep));
+  -webkit-backdrop-filter: blur(var(--glass-blur-deep));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--audit-radius-lg);
+  box-shadow: var(--audit-shadow-lg);
+}
+
+.glass-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--glass-border);
+  border-radius: var(--audit-radius) var(--audit-radius) 0 0;
+  padding: var(--audit-space-md) var(--audit-space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--audit-space-md);
+}
+
+/* ---- Task 4: Audit Card 基础样式 ---- */
+
+.audit-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--audit-radius);
+  box-shadow: var(--audit-shadow-sm);
+  padding: var(--audit-space-lg);
+  margin-bottom: var(--audit-space-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+              box-shadow 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  cursor: default;
+}
+
+.audit-card:hover {
+  transform: scale(1.01);
+  box-shadow: var(--audit-shadow-md);
+}
+
+/* 左侧 4px 彩色风险指示条 */
+.audit-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.audit-card--low::before {
+  background: var(--audit-low);
+}
+
+.audit-card--medium::before {
+  background: var(--audit-medium);
+}
+
+.audit-card--high::before {
+  background: var(--audit-high);
+}
+
+/* 高风险呼吸光晕 */
+.audit-card--high {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 69, 58, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 69, 58, 0.08), 0 0 0 12px rgba(255, 69, 58, 0.04);
+  }
+}
+
+/* 卡片内容布局 */
+.audit-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--audit-space-md);
+  margin-bottom: var(--audit-space-md);
+}
+
+.audit-card__summary {
+  flex: 1;
+  min-width: 0;
+}
+
+.audit-card__risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--audit-space-xs);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.audit-card__risk-badge--low {
+  background: var(--audit-low-bg);
+  color: var(--audit-low-text);
+  border: 1px solid var(--audit-low-border);
+}
+
+.audit-card__risk-badge--medium {
+  background: var(--audit-medium-bg);
+  color: var(--audit-medium-text);
+  border: 1px solid var(--audit-medium-border);
+}
+
+.audit-card__risk-badge--high {
+  background: var(--audit-high-bg);
+  color: var(--audit-high-text);
+  border: 1px solid var(--audit-high-border);
+}
+
+/* Diff 视图区域 */
+.audit-card__diff {
+  background: var(--audit-surface);
+  border-radius: var(--audit-radius-sm);
+  padding: var(--audit-space-md);
+  margin-bottom: var(--audit-space-md);
+  font-family: var(--audit-font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.audit-card__diff .diff-add {
+  color: var(--audit-low);
+  background: var(--audit-low-bg);
+}
+
+.audit-card__diff .diff-remove {
+  color: var(--audit-high);
+  background: var(--audit-high-bg);
+}
+
+/* 操作按钮区 */
+.audit-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--audit-space-sm);
+}
+
+.audit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--audit-space-xs);
+  padding: 8px 16px;
+  border-radius: var(--audit-radius-sm);
+  font-family: var(--audit-font-text);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.audit-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+.audit-btn--primary {
+  background: #007AFF;
+  color: #FFFFFF;
+}
+
+.audit-btn--primary:hover {
+  background: #0066D6;
+}
+
+.audit-btn--primary:active {
+  background: #0055BB;
+  transform: scale(0.97);
+}
+
+.audit-btn--secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary, #1D1D1F);
+}
+
+.audit-btn--secondary:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.audit-btn--danger {
+  background: var(--audit-high-bg);
+  color: var(--audit-high-text);
+}
+
+.audit-btn--danger:hover {
+  background: rgba(255, 69, 58, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  .audit-btn--secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #F5F5F7;
+  }
+
+  .audit-btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* 批量操作工具栏 */
+.audit-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--audit-space-md);
+}
+
+.audit-toolbar__count {
+  font-family: var(--audit-font-text);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary, #86868B);
+}
+
+/* 淡出动画（辅助类） */
+.audit-card--exiting {
+  opacity: 0;
+  transform: scale(0.95);
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-width: 0;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+/* ---- Task 5: 微动效 ---- */
+
+/* 接受 — spring 弹性动画 */
+@keyframes acceptSpring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+}
+
+.audit-card--accepting {
+  animation: acceptSpring 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  pointer-events: none;
+}
+
+/* 拒绝 — 抖动动画 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px); }
+  30% { transform: translateX(6px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+
+.audit-card--rejecting {
+  animation: shake 0.4s ease, fadeOut 0.3s ease 0.35s forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ---- Task 6: 计划审核器 ---- */
+
+.plan-reviewer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--audit-space-md);
+}
+
+.plan-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--audit-space-md);
+  position: relative;
+  padding-left: var(--audit-space-2xl);
+}
+
+/* 连接线 */
+.plan-step::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 28px;
+  bottom: -16px;
+  width: 2px;
+  background: var(--glass-border);
+  border-radius: 1px;
+}
+
+.plan-step:last-child::before {
+  display: none;
+}
+
+/* 步骤节点 */
+.plan-step__node {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+/* 已完成 — 实心 */
+.plan-step__node--done {
+  background: var(--audit-low);
+  border: 2px solid var(--audit-low);
+  color: #FFFFFF;
+}
+
+/* 待审核 — 描边 */
+.plan-step__node--pending {
+  background: transparent;
+  border: 2px solid var(--glass-border);
+  color: var(--text-secondary, #86868B);
+}
+
+.plan-step__node--pending::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary, #86868B);
+}
+
+/* 高风险 — 警告 */
+.plan-step__node--warning {
+  background: var(--audit-high-bg);
+  border: 2px solid var(--audit-high);
+  color: var(--audit-high);
+}
+
+.plan-step__content {
+  flex: 1;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--audit-radius);
+  padding: var(--audit-space-lg);
+  min-width: 0;
+}
+
+/* 人在回路审核节点 */
+.plan-step__content--review {
+  border-color: #007AFF;
+  border-width: 1.5px;
+  background: rgba(0, 122, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.plan-step__content--review:hover {
+  background: rgba(0, 122, 255, 0.08);
+  border-color: #0055CC;
+  box-shadow: var(--audit-shadow-sm);
+}
+
+.plan-step__review-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--audit-space-xs);
+  color: #007AFF;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: var(--audit-space-sm);
+}
+
+.plan-step__review-actions {
+  margin-top: var(--audit-space-md);
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.plan-step__review-actions--collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.plan-step__review-actions--expanded {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* ---- Task 7: Dashboard 审计卡片 ---- */
+
+.dashboard-audit-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--audit-radius);
+  box-shadow: var(--audit-shadow-sm);
+  padding: var(--audit-space-lg);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+              box-shadow 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.dashboard-audit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--audit-shadow-md);
+}
+
+.dashboard-audit-card:active {
+  transform: scale(0.98);
+}
+
+.dashboard-audit-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--audit-space-md);
+}
+
+.dashboard-audit-card__count {
+  font-family: var(--audit-font-display);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.dashboard-audit-card__risk-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dashboard-audit-card__risk-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dashboard-audit-card__risk-dot--low {
+  background: var(--audit-low);
+}
+
+.dashboard-audit-card__risk-dot--medium {
+  background: var(--audit-medium);
+}
+
+.dashboard-audit-card__risk-dot--high {
+  background: var(--audit-high);
+}
+
+.dashboard-audit-card__summary {
+  font-family: var(--audit-font-text);
+  font-size: 14px;
+  color: var(--text-secondary, #86868B);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dashboard-audit-card__arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--audit-space-md);
+  font-family: var(--audit-font-text);
+  font-size: 14px;
+  font-weight: 500;
+  color: #007AFF;
+  transition: gap 0.2s ease;
+}
+
+.dashboard-audit-card:hover .dashboard-audit-card__arrow {
+  gap: 8px;
+}
